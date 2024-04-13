@@ -10,25 +10,23 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
-SOURCES = \
-	ft_printchar.c \
-	ft_printf.c \
-	ft_printnbr.c \
-	ft_printptr.c \
-	ft_printstr.c \
+NAME	= libftprintf.a
 
-OBJECTS = $(SOURCES:.c=.o)
-CFLAGS = -Wall -Wextra -Werror
-CC = cc
+SRC	= ft_printf ft_puthexa ft_putchar_len ft_putnbr ft_putpointer ft_putstr_len ft_strlcpy ft_strlen ft_type_option
 
-all: $(NAME)
+OBJECTS	= $(SRC:.c=.o)
+
+CC		= cc
+
+CFLAGS	= -Wall -Wextra -Werror
+
+all:	$(NAME)
 
 $(NAME): $(OBJECTS)
-	$(AR) -r $@ $?
+	ar rcs $(NAME) $(OBJECTS)
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $?
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJECTS)
@@ -36,6 +34,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re:	fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY:	all ,clean ,fclean, re

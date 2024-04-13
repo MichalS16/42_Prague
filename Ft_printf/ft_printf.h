@@ -16,11 +16,17 @@
 # include <stdarg.h>
 # include <stdint.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <unistd.h>
 
-int	ft_printchar(char c);
-int	ft_printf(const char *str, ...);
-int	ft_printnbr(long n, int base, int uppercase);
-int	ft_printptr(unsigned long long ptr);
-int	ft_printstr(char *s);
+void	ft_type_option(char type, va_list args, int *len);
+int		ft_printf(const char *str, ...);
+void	ft_putchar_len(char c, int *len);
+void	ft_putnbr(unsigned int n, int *len);
+void	ft_puthexa(unsigned int n, char hex_base, int *len);
+void	ft_putpointer(void *ptr, int *len);
+void	ft_puthexa(uintptr_t number, int *len);
+void	ft_putstr_len(char *s, int *len);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+size_t	ft_strlen(const char *str);
 #endif

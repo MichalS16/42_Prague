@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msmiesko <msmiesko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 14:49:35 by msmiesko          #+#    #+#             */
-/*   Updated: 2024/04/13 14:49:35 by msmiesko         ###   ########.fr       */
+/*   Created: 2024/04/13 14:23:49 by msmiesko          #+#    #+#             */
+/*   Updated: 2024/04/13 14:23:49 by msmiesko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	va_list	args;
-	int		sum;
-	int		*len;
+	size_t	i;
+	char	*source;
 
-	va_start(args, str);
-	sum = 0;
-	len = &sum;
-	while (*str)
+	source = (char *) src;
+	i = 0;
+	while (source[i] && ((i + 1) < size))
 	{
-		if (*str != '%')
-			ft_putchar_len(*str, len);
-
-		else
-		{
-			ft_type_option(*(str + 1), args, len);
-			str++;
-		}
-		str++;
+		dest[i] = source[i];
+		i++;
 	}
-	va_end(args);
-	return (sum);
+
+	if (size)
+		dest[i] = 0;
+
+	return (ft_strlen(src));
 }

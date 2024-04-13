@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msmiesko <msmiesko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 14:49:35 by msmiesko          #+#    #+#             */
-/*   Updated: 2024/04/13 14:49:35 by msmiesko         ###   ########.fr       */
+/*   Created: 2024/04/13 14:32:25 by msmiesko          #+#    #+#             */
+/*   Updated: 2024/04/13 14:32:25 by msmiesko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+void	ft_putnbr(unsigned int n, int *len)
 {
-	va_list	args;
-	int		sum;
-	int		*len;
+	unsigned long int	n_long;
 
-	va_start(args, str);
-	sum = 0;
-	len = &sum;
-	while (*str)
+	n_long = n;
+	if (n_long < 0)
 	{
-		if (*str != '%')
-			ft_putchar_len(*str, len);
-
-		else
-		{
-			ft_type_option(*(str + 1), args, len);
-			str++;
-		}
-		str++;
+		n_long = -n_long;
+		ft_putchar_len('-', len);
 	}
-	va_end(args);
-	return (sum);
+	if (n_long > 9)
+	{
+		ft_putnbr(n_long / 10, len);
+		ft_putnbr(n_long % 10, len);
+	}
+	else
+		ft_putchar_len(n_long + '0', len);
 }

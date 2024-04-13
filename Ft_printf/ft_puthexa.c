@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstr.c                                      :+:      :+:    :+:   */
+/*   ft_puthexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msmiesko <msmiesko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 23:28:48 by msmiesko          #+#    #+#             */
-/*   Updated: 2024/04/12 23:28:48 by msmiesko         ###   ########.fr       */
+/*   Created: 2024/04/13 14:46:29 by msmiesko          #+#    #+#             */
+/*   Updated: 2024/04/13 14:46:29 by msmiesko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_printstr(char *str)
+void	ft_puthexa(unsigned int number, char hex_base, int *len)
 {
-	int	i;
+	char	base[17];
 
-	i = 0;
-	if (!str)
-		return (write(1, "(null)", 6));
-	while (str[i])
+	if (hex_base == 'h')
+		ft_strlcpy(base, "0123456789abcdef", 17);
+
+	else if (hex_base == 'H')
+		ft_strlcpy(base, "0123456789ABCDEF", 17);
+
+	if (number > 15)
 	{
-		write(1, &str[i], 1);
-		i++;
+		ft_puthexa(number / 16, hex_base, len);
+		ft_puthexa(number % 16, hex_base, len);
 	}
-	return (i);
+
+	else
+		ft_putchar_len(base[number], len);
 }
