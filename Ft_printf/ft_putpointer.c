@@ -12,14 +12,27 @@
 
 #include "ft_printf.h"
 
+void	ft_put_hexa_adress(uintptr_t number, int *len)
+{
+	char	base[17];
+
+	ft_strlcpy(base, "0123456789abcdef", 17);
+	if (number > 15)
+	{
+		ft_put_hexa_adress(number / 16, len);
+		ft_put_hexa_adress(number % 16, len);
+	}
+	else
+		ft_putchar_c(base[number], len);
+}
+
 void	ft_putpointer(void *ptr, int *len)
 {
 	if (ptr == NULL)
 	{
-		ft_putstr_len("(nil)", len);
-		return;
+		ft_putstr_c("(nil)", len);
+		return ;
 	}
-
-	ft_putstr_len("0x", len);
-	ft_puthexa((uintptr_t) ptr, len);
+	ft_putstr_c("0x", len);
+	ft_put_hexa_adress((uintptr_t) ptr, len);
 }

@@ -24,8 +24,8 @@ int		ft_printf(const char *str, ...);
 void	ft_putchar_len(char c, int *len);
 void	ft_putnbr(unsigned int n, int *len);
 void	ft_puthexa(unsigned int n, char hex_base, int *len);
+void	ft_put_hexa_adress(uintptr_t number, int *len)
 void	ft_putpointer(void *ptr, int *len);
-void	ft_puthexa(uintptr_t number, int *len);
 void	ft_putstr_len(char *s, int *len);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
