@@ -18,7 +18,7 @@ void	ft_type_option(char type, va_list args, int *len)
 		ft_putnbr(va_arg(args, int), len);
 
 	if (type == 'u')
-		ft_putnbr(va_arg(args, unsigned int), len);
+		ft_putanynbr(va_arg(args, unsigned int), len);
 
 	else if (type == 'c')
 		ft_putchar_len((unsigned char) va_arg(args, int), len);
