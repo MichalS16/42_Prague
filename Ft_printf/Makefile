@@ -12,7 +12,7 @@
 
 NAME	= libftprintf.a
 
-SRC	= ft_printf ft_puthexa ft_putchar_len ft_putnbr ft_putpointer ft_putstr_len ft_strlcpy ft_strlen ft_type_option
+SRC	= ft_printf.c ft_puthexa.c ft_putchar_len.c ft_putnbr.c ft_putpointer.c ft_putstr_len.c ft_strlcpy.c ft_strlen.c ft_type_option.c
 
 OBJECTS	= $(SRC:.c=.o)
 
