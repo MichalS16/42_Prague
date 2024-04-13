@@ -20,7 +20,7 @@ void	ft_putnbr(int n, int *len)
 	if (n_long < 0)
 	{
 		n_long = -n_long;
-		ft_putchar_c('-', len);
+		ft_putchar_len('-', len);
 	}
 	if (n_long > 9)
 	{

@@ -23,5 +23,5 @@ void	ft_putanynbr(unsigned int n, int *len)
 		ft_putanynbr(n_long % 10, len);
 	}
 	else
-		ft_putchar_c(n_long + '0', len);
+		ft_putchar_len(n_long + '0', len);
 }
