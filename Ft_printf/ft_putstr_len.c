@@ -16,7 +16,7 @@ void	ft_putstr_len(char *str, int *len)
 {
 	if (str == NULL)
 	{
-		ft_ft_putstr_len("(null)", len);
+		ft_putstr_len("(null)", len);
 		return;
 	}
 

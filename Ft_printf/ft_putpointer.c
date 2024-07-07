@@ -23,16 +23,16 @@ void	ft_put_hexa_adress(uintptr_t number, int *len)
 		ft_put_hexa_adress(number % 16, len);
 	}
 	else
-		ft_putchar_c(base[number], len);
+		ft_putchar_len(base[number], len);
 }
 
 void	ft_putpointer(void *ptr, int *len)
 {
 	if (ptr == NULL)
 	{
-		ft_putstr_c("(nil)", len);
+		ft_putstr_len("(nil)", len);
 		return ;
 	}
-	ft_putstr_c("0x", len);
+	ft_putstr_len("0x", len);
 	ft_put_hexa_adress((uintptr_t) ptr, len);
 }

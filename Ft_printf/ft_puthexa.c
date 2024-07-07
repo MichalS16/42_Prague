@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+
 void	ft_puthexa(unsigned int number, char hex_base, int *len)
 {
 	char	base[17];
